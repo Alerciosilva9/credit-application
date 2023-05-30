@@ -3,10 +3,12 @@ package com.app.credit.application.service.impl
 import com.app.credit.application.entity.Credit
 import com.app.credit.application.repositories.CreditRepository
 import com.app.credit.application.service.ICreditService
+import org.springframework.stereotype.Service
 import java.lang.RuntimeException
 import java.time.LocalDate
 import java.util.UUID
 
+@Service
 class CreditService(
         private val creditRepository: CreditRepository,
         private val customerService: CustomerService
@@ -28,7 +30,7 @@ class CreditService(
                 ?: throw RuntimeException("Creditcode $creditCode not found"))
         return if (credit.customer?.id == customerId) credit
         else throw IllegalArgumentException("Contact admin")
-      
+
     }
 
     private fun validDayFirstInstallment(dayFirstInstallment: LocalDate): Boolean {

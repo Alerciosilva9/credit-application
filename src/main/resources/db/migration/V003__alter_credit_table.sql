@@ -1,0 +1,1 @@
+ALTER TABLE credit add income DECIMAL NOT NULL
