@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-@RequestMapping("/Customers")
+@RequestMapping("/customers")
 class CustomerController (private val customerService:CustomerService) {
 
     @PostMapping
-    fun save(@RequestBody dto:CustomerDTO):ResponseEntity<String>{
+    fun save(@RequestBody @Valid dto:CustomerDTO):ResponseEntity<String>{
         var savedcustomer = this.customerService.save(dto.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED).body("${savedcustomer.email} foi salvo com sucesso")
     }

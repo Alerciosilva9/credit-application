@@ -1,6 +1,7 @@
 package com.app.credit.application.service.impl
 
 import com.app.credit.application.entity.Credit
+import com.app.credit.application.exceptions.BussinessException
 import com.app.credit.application.repositories.CreditRepository
 import com.app.credit.application.service.ICreditService
 import org.springframework.stereotype.Service
@@ -35,6 +36,6 @@ class CreditService(
 
     private fun validDayFirstInstallment(dayFirstInstallment: LocalDate): Boolean {
         return if (dayFirstInstallment.isBefore(LocalDate.now().plusMonths(3))) true
-        else throw RuntimeException("Invalid Date")
+        else throw BussinessException("Invalid Date")
     }
 }
