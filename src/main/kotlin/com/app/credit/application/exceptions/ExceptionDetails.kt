@@ -1,5 +1,7 @@
 package com.app.credit.application.exceptions
 
+import java.time.LocalDateTime
+
 data class ExceptionDetails(
         val title: String,
         val timestamp: LocalDateTime,
